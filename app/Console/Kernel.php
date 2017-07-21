@@ -9,11 +9,12 @@ class Kernel extends ConsoleKernel
 {
     /**
      * The Artisan commands provided by your application.
-     *
+     * 挂载自定义的命令
      * @var array
      */
     protected $commands = [
         //
+        \App\Console\Commands\ESInit::class
     ];
 
     /**

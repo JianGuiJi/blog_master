@@ -38,8 +38,12 @@ Route::post('/user/me/setting','\App\Http\Controllers\UserController@settingSotr
 //文章首页
 Route::get('/posts', '\App\Http\Controllers\PostController@index');
 
+##搜索
+Route::get('/posts/search', '\App\Http\Controllers\PostController@search');
+
 //文章创建
 Route::get('/posts/create', '\App\Http\Controllers\PostController@create');
+
 //文章处理
 Route::post('/posts', '\App\Http\Controllers\PostController@store');
 
@@ -60,3 +64,5 @@ Route::post('/posts/{post}/comment', '\App\Http\Controllers\PostController@comme
 ##赞
 Route::get('/posts/{post}/zan', '\App\Http\Controllers\PostController@zan');
 Route::get('/posts/{post}/unzan', '\App\Http\Controllers\PostController@unzan');
+
+

@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::orderBy('created_at', 'desc')->withCount(['comments','zans'])->paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->withCount(['comments', 'zans'])->paginate(5);
 //        return view("post/index", ['posts' => $posts]);
         return view("post/index", compact('posts'));
     }
@@ -146,6 +146,24 @@ class PostController extends Controller
     {
         $post->zan(\Auth::id())->delete();
         return back();
+    }
+
+    //搜索页面
+    public function search()
+    {
+
+        ##验证
+        $this->validate(request(), [
+            'query' => 'required'
+        ]);
+
+        ##逻辑
+        $query = request('query');
+        $posts = \App\Post::search($query)->paginate(2);
+
+        ##渲染
+        return view('post.search', compact('posts','query'));
+//        return 'this is search';
     }
 
 }
