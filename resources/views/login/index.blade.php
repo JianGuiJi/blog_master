@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{--<meta name="csrf-token" content="{{ csrf_token() }}">--}}
-    <title>注册页面</title>
+    <title>登录页面</title>
 
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">

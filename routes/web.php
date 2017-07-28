@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('base', function () {
+Route::get('phpinfo', function () {
     return view('base.index');
 });
 
