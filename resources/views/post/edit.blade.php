@@ -28,18 +28,19 @@
     {{--<script type="text/javascript" src="/js/lib/jquery-1.10.2.min.js"></script>--}}
     {{--<script type="text/javascript" src="/js/wangEditor.min.js"></script>--}}
     {{--https://github.com/wangfupeng1988/wangEditor/tree/v2.1.23--}}
-    <script type="text/javascript">
-        $(function () {
-            var editor = new wangEditor('content');
-            //配置图片上传的功能
-            //https://www.kancloud.cn/wangfupeng/wangeditor2/113992
-            editor.config.uploadImgUrl = '/posts/image/upload';
-            // 设置 headers（举例）
-            editor.config.uploadHeaders = {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            };
+    {{--<script type="text/javascript">--}}
+        {{--$(function () {--}}
+            {{--var editor = new wangEditor('content');--}}
+            {{--//配置图片上传的功能--}}
+            {{--//https://www.kancloud.cn/wangfupeng/wangeditor2/113992--}}
+            {{--editor.config.uploadImgUrl = '/posts/image/upload';--}}
+            {{--// 设置 headers（举例）--}}
+            {{--editor.config.uploadHeaders = {--}}
+                {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+            {{--};--}}
 
-            editor.create();
-        });
-    </script>
+            {{--editor.create();--}}
+        {{--});--}}
+    {{--</script>--}}
+    {{--<script src="/js/ylaravel.js"></script>--}}
 @endsection

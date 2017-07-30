@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>文章本天成</title>
-
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/wangEditor.min.css">
@@ -13,6 +12,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/wangEditor.min.js"></script>
+
     <style>
         .item img {
             width: 100%;
@@ -37,5 +37,8 @@
 </div>
 @include("layout.footer")
 
+
+{{--<script src="{{ mix('/js/ylaravel.js') }}"></script>--}}
+<script src="/js/ylaravel.js"></script>
 </body>
 </html>

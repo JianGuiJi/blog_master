@@ -105,9 +105,9 @@ class PostController extends Controller
 
         //todo 系统文件配置 改成 选择 public驱动
         //D:\Projects\mylaravel54\config\filesystems.php
-        // 'default' => env('FILESYSTEM_DRIVER', 'public'),
+//         'default' => env('FILESYSTEM_DRIVER', 'public')
+//        dd($request->file('wangEditorH5File'));
         $path = $request->file('wangEditorH5File')->storePublicly(md5(time()));
-
         return asset('storage/' . $path);
 
     }
@@ -165,5 +165,7 @@ class PostController extends Controller
         return view('post.search', compact('posts','query'));
 //        return 'this is search';
     }
+
+
 
 }

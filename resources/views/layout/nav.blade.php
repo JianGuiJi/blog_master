@@ -18,18 +18,19 @@
                 <li><a href="/posts/create">写文章 <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">通知</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">其他 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
+                {{--<li class="dropdown">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"--}}
+                       {{--aria-expanded="false">其他 <span class="caret"></span></a>--}}
+                    {{--<ul class="dropdown-menu">--}}
+                        {{--<li><a href="#">Action</a></li>--}}
+                        {{--<li><a href="#">Another action</a></li>--}}
+                        {{--<li><a href="#">Something else here</a></li>--}}
+                        {{--<li role="separator" class="divider"></li>--}}
+                        {{--<li><a href="#">Separated link</a></li>--}}
+                        {{--<li role="separator" class="divider"></li>--}}
+                        {{--<li><a href="#">One more separated link</a></li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
             </ul>
             <form class="navbar-form navbar-left" method="get" action="/posts/search">
                 {{csrf_field()}}
@@ -44,12 +45,12 @@
 
                 <li class="dropdown">
                     <div class="">
-                        <img src="/images/1.jpg" class="img-circle" alt="头像" style="height: 30px;">
+                        <img src="{{\Auth::user()->avatar}}" class="img-circle" alt="头像" style="height: 30px;">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">{{\Auth::user()->name}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/user/1">我的主页</a></li>
-                            <li><a href="/user/1/setting">个人设置</a></li>
+                            <li><a href="/user/{{\Auth::user()->id}}">我的主页</a></li>
+                            <li><a href="/user/me/setting">个人设置</a></li>
 
                             <li role="separator" class="divider"></li>
                             <li><a href="/logout">退出</a></li>
