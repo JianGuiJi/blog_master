@@ -12,8 +12,12 @@ class PostController extends Controller
 {
     //
     //文章列表
-    public function index()
+    public function index(\Psr\Log\LoggerInterface $log)
     {
+        //日志 依赖 注入类
+//        \Log::info('post_index',['data'=>'this is index']);
+        $log->info('post_index',['data'=>'this is index']);
+
 
         $posts = Post::orderBy('created_at', 'desc')->withCount(['comments', 'zans'])->paginate(5);
 //        return view("post/index", ['posts' => $posts]);

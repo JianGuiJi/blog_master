@@ -48,7 +48,7 @@ Route::get('/posts/create', '\App\Http\Controllers\PostController@create');
 Route::post('/posts', '\App\Http\Controllers\PostController@store');
 
 //文章详情
-Route::get('/posts/{post}', '\App\Http\Controllers\PostController@show');
+Route::get('/posts/{post}', '\App\Http\Controllers\PostController@show')->where('post', '[0-9]+');
 
 //编辑文章
 Route::get('/posts/{post}/edit', '\App\Http\Controllers\PostController@edit');
@@ -70,3 +70,5 @@ Route::get('/posts/{post}/unzan', '\App\Http\Controllers\PostController@unzan');
 Route::get('/user/{user}', '\App\Http\Controllers\UserController@show');
 Route::get('/user/{user}/fan', '\App\Http\Controllers\UserController@fan');
 Route::get('/user/{user}/unfan', '\App\Http\Controllers\UserController@unfan');
+
+##
