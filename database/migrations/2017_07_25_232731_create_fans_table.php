@@ -16,9 +16,10 @@ class CreateFansTable extends Migration
         //
         Schema::create('fans', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('fan_id')->default(0);//粉丝Id
-            $table->integer('star_id')->default(0);//被关注的ID
+            $table->integer('fan_id')->default(0)->comment('粉丝Id');//粉丝Id
+            $table->integer('star_id')->default(0)->comment('被关注的ID');//被关注的ID
             $table->timestamps();
+            $table->comment = '粉丝表';
         });
     }
 
