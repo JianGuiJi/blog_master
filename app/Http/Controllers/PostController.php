@@ -6,6 +6,7 @@ use App\Comment;
 use App\Post;
 use App\Zan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Psy\Output\ProcOutputPager;
 use Illuminate\Support\Facades\DB;
 
@@ -117,7 +118,34 @@ class PostController extends Controller
         //todo 系统文件配置 改成 选择 public驱动
         //D:\Projects\mylaravel54\config\filesystems.php
 //         'default' => env('FILESYSTEM_DRIVER', 'public')
-//        dd($request->file('wangEditorH5File'));
+
+        //Storage::disk('local')->put('file.txt', 'Contents');
+        if(false){
+            $file = $request->file('wangEditorH5File');
+            if ($file->isValid()) {
+                # 原文件名
+                $originalName = $file->getClientOriginalName();
+                # 扩展名
+                $ext = $file->getClientOriginalExtension();
+                # 类型
+                $type = $file->getClientMimeType();
+                #临时绝对路径
+                $realPath = $file->getRealPath();
+
+                #文件命名：时间+唯一id+扩展
+                $file_name = date('YmdHis') . '-' . uniqid() . $ext;
+
+                ## 上传文件目录 需要配置 uploads 配置地址 D\config\filesystems.php
+                # Storage::disk http://d.laravel-china.org/api/5.4/Illuminate/Filesystem/FilesystemAdapter.html#method_exists
+//            dd(Storage::disk('uploads')->files($file_name));
+
+//            $bool = Storage::disk('uploads')->putFile($file_name, $file); ##直接把上传的文件存储到指定path
+
+                $bool = Storage::disk('uploads')->put($file_name, file_get_contents($realPath));
+
+            }
+        }
+
         $path = $request->file('wangEditorH5File')->storePublicly(md5(time()));
         return asset('storage/' . $path);
 
