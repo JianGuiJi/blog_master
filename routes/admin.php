@@ -5,6 +5,8 @@
  * Date: 2017/8/6
  * Time: 16:40
  */
+
+Route::get('/home', '\App\Http\Controllers\Admin\HomeController@index');
 ### 后台管理的路由
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', '\App\Http\Controllers\Admin\LoginController@index');
