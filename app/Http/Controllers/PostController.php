@@ -7,6 +7,7 @@ use App\Post;
 use App\Zan;
 use Illuminate\Http\Request;
 use Psy\Output\ProcOutputPager;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -16,7 +17,7 @@ class PostController extends Controller
     {
         //日志 依赖 注入类
 //        \Log::info('post_index',['data'=>'this is index']);
-        $log->info('post_index',['data'=>'this is index']);
+        $log->info('post_index', ['data' => 'this is index']);
 
 
         $posts = Post::orderBy('created_at', 'desc')->withCount(['comments', 'zans'])->paginate(5);
@@ -56,14 +57,20 @@ class PostController extends Controller
             'content' => 'required|string|min:10'
         ]);
         //逻辑
+        ##开启事务
+        DB::beginTransaction();
         $user_id = \Auth::id();
         $param = array_merge(request(['title', 'content']), compact('user_id'));
 
-        Post::create($param); //Post内必须定义： protected $fillable=['title','content'];//可以使用数组注入字段
-        return redirect("/posts");//前端的URI:/posts(和view('/post/edit不是一个概念')) ;也可以返回html
+        $ret = Post::create($param); //Post内必须定义： protected $fillable=['title','content'];//可以使用数组注入字段
+        if ($ret) {
+            DB::commit();
+            return redirect("/posts");//前端的URI:/posts(和view('/post/edit不是一个概念')) ;也可以返回html
+        }
 
-//        dd(requet());//dump and die;
-//        dd($params);//dump and die;
+        return back()->withErrors('文章提交失败');
+//        return \Redirect::back()->withErrors('邮箱密码不匹配');
+
     }
 
     //文章编辑
@@ -128,7 +135,6 @@ class PostController extends Controller
         $comment->user_id = \Auth::id();
         $comment->content = request('content');
         $post->comments()->save($comment);
-
         //渲染
         return back();
     }
@@ -166,10 +172,9 @@ class PostController extends Controller
         $posts = \App\Post::search($query)->paginate(2);
 
         ##渲染
-        return view('post.search', compact('posts','query'));
+        return view('post.search', compact('posts', 'query'));
 //        return 'this is search';
     }
-
 
 
 }
