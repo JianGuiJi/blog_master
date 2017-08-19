@@ -24,7 +24,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h2>请登录</h2>
+            <h2>登录</h2>
             <form action="/login" method="POST">
                 {{ csrf_field() }}
 
