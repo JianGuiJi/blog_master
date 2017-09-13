@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Mail;
+
 class LoginController extends Controller
 {
     /*
@@ -26,6 +28,15 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/posts';
+
+    ## 邮件发送demo
+    public function mail(){
+        Mail::raw('邮件内容',function($message){
+            $message->from('jjg2zq@aliyun.com','季见鬼');
+            $message->subject('邮件测试');
+            $message->to('378823123@qq.com','季建贵');
+        });
+    }
 
     //登录页面
     public function index()
