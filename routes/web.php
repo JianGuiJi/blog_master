@@ -14,23 +14,22 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/','\App\Http\Controllers\LoginController@index');
+
 
 ###注册页面
-Route::get('/register','\App\Http\Controllers\RegisterController@index');
-Route::post('/register','\App\Http\Controllers\RegisterController@register');//注册行为
+Route::get('/register', '\App\Http\Controllers\RegisterController@index');
+Route::post('/register', '\App\Http\Controllers\RegisterController@register');//注册行为
 
 ###登录页面
-Route::get('/login','\App\Http\Controllers\LoginController@index')->name('login');
-Route::post('/login','\App\Http\Controllers\LoginController@login');//登录行为
-Route::get('/logout','\App\Http\Controllers\LoginController@logout');//退出行为
+Route::get('/login', '\App\Http\Controllers\LoginController@index')->name('login');
+Route::post('/login', '\App\Http\Controllers\LoginController@login');//登录行为
+Route::get('/logout', '\App\Http\Controllers\LoginController@logout');//退出行为
 
-Route::group(['middleware'=>'auth:web'],function(){
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', '\App\Http\Controllers\LoginController@index');
 ###个人设置页面
-    Route::get('/user/me/setting','\App\Http\Controllers\UserController@setting');
-    Route::post('/user/{me}/setting','\App\Http\Controllers\UserController@settingStore');//个人设置操作
-
+    Route::get('/user/me/setting', '\App\Http\Controllers\UserController@setting');
+    Route::post('/user/{me}/setting', '\App\Http\Controllers\UserController@settingStore');//个人设置操作
 
 
 //文章首页
@@ -70,6 +69,15 @@ Route::group(['middleware'=>'auth:web'],function(){
     Route::get('/user/{user}/unfan', '\App\Http\Controllers\UserController@unfan');
 });
 
-
+##邮件发送测试
+Route::any('/send', '\App\Http\Controllers\MailController@mail');
+##路由或控制器中触发 Artisan 命令
+Route::get('/foo', function () {
+    $exitCode = Artisan::call('email:send', [
+        'user' => 1, '--queue' => 'default'
+    ]);
+    dd($exitCode);
+    //
+});
 ##后台管理
 include_once('admin.php');

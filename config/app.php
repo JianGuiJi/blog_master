@@ -120,9 +120,10 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),##使用 daily 日志模式时，Laravel 将只保留五天默认的日志文件
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
+    'log_max_files' => 30,#调整保留文件的数量
 
     /*
     |--------------------------------------------------------------------------

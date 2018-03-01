@@ -13,8 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        # 设置表默认字段长度为191，若数据库编码为utf8mb4的
         Schema::defaultStringLength(191);
+
+        #
+
     }
 
     /**
