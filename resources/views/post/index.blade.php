@@ -12,21 +12,27 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="http://www.bz55.com/uploads/allimg/140619/1-140619152320-50.jpg" alt="...">
+                    <img src="{{asset("/images/carousel/m1.jpg")}}" alt="...">
                     <div class="carousel-caption">
                         美女1号
                     </div>
                 </div>
                 <div class="item">
-                    <img src="http://www.bz55.com/uploads/allimg/140619/1-140619152320-50.jpg" alt="...">
+                    <img src="{{asset("/images/carousel/m2.jpg")}}" alt="...">
                     <div class="carousel-caption">
                         美女2号
                     </div>
                 </div>
                 <div class="item">
-                    <img src="http://www.bz55.com/uploads/allimg/140619/1-140619152320-50.jpg" alt="...">
+                    <img src="{{asset("/images/carousel/m4.jpg")}}" alt="...">
                     <div class="carousel-caption">
                         美女4号
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{{asset("/images/carousel/m6.jpg")}}" alt="...">
+                    <div class="carousel-caption">
+                        美女6号
                     </div>
                 </div>
 
@@ -44,7 +50,7 @@
         </div>
 
         {{--文章主体--}}
-        <div>
+        <div style="margin-top:20px;">
             @foreach($posts as $post)
                 <div class="blog-class">
                     <p><a style="font-size:18px; line-height:22px; height:22px;" href="/posts/{{$post->id}}"

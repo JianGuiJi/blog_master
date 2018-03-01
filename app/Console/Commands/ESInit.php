@@ -42,7 +42,7 @@ class ESInit extends Command
         //创建template
         $client = new Client();
         $url = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
-        $client->delete($url);
+//        $client->delete($url);
 
         $param = [
             'json' => [
@@ -76,7 +76,8 @@ class ESInit extends Command
 
         //创建index
         $url = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
-        $client->delete($url);
+
+//        $client->delete($url);
         $param = [
             'json' => [
                 'settings' => [
