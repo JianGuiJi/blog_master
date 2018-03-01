@@ -14,7 +14,7 @@ class Post extends Model
     protected $fillable = ['title', 'content', 'user_id'];//可以使用数组注入字段
 
 
-//    use  Searchable; ##使用搜索特性 ，数据插入 搜索系统 Scout:es
+    use  Searchable; ##使用搜索特性 ，数据插入 搜索系统 Scout:es
 
     //定义索引里面的type
     public function searchableAs()
